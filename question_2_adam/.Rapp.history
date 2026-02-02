@@ -1,0 +1,3 @@
+load("/Users/itzcmy/Desktop/Genentech/question_2_adam/adsl.rda")
+load("/Users/itzcmy/Desktop/Genentech/question_2_adam/adsl.rda")
+View(adsl)

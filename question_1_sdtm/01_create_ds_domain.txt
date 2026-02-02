@@ -1,0 +1,79 @@
+
+> # load packages
+> library(sdtm.oak)
+
+> library(pharmaverseraw)
+
+> library(dplyr)
+
+> setwd("/Users/itzcmy/Desktop/Genentech")
+
+> # input raw data & controlled terminology
+> ds_raw <- pharmaverseraw::ds_raw
+
+> dm <- pharmaversesdtm::dm
+
+> study_ct <- read.csv("~/Desktop/Genentech/sdtm_ct.csv")
+
+> View(ds_raw)
+
+> View(study_ct)
+
+> # generate oak id variables
+> ds_raw <- ds_raw %>%
++   generate_oak_id_vars(
++     pat_var = "PATNUM",
++     raw_src = "ds_raw"
++   )
+
+> # ---- Derive topic variable - DSTERM ----
+> 
+> # if othersp is null then map the value in IT.DSTERM to DSTERM
+> ds01 <- assign_no_ct(
++   raw_dat = .... [TRUNCATED] 
+
+> # ---- Map qualifiers, identifiers, and timing variable ----
+> 
+> ds02 <- ds01 %>%
++   assign_ct(
++     raw_dat = condition_add(ds_raw, is.na(OTHERS .... [TRUNCATED] 
+
+> ds03 <- ds02 %>%
++   #If IT.DSDECOD = Randomized then map DSCAT = PROTOCOL MILESTONE 
++   hardcode_ct(
++     raw_dat = condition_add(ds_raw, IT.DSDE .... [TRUNCATED] 
+
+> # If OTHERSP is not null then map the value in OTHERSP to DSDECOD and also to DSTERM
+> ds04 <- ds03 %>% 
++   # If OTHERSP is null then map the value .... [TRUNCATED] 
+
+> ds05 <- ds04 %>%
++   # Map the value in IT.DSSDAT to DSSTDTC in ISO8601 format
++   assign_datetime(
++     raw_dat = ds_raw,
++     raw_var = "IT.DSST ..." ... [TRUNCATED] 
+
+> # View(ds05)
+> 
+> ds06 <- ds05 %>% 
++   # Map VISIT from INSTANCE using assign_ct
++   assign_ct(
++     raw_dat = ds_raw,
++     raw_var = "INSTANCE", .... [TRUNCATED] 
+
+> # Final DS domain dataset creation ----
+> 
+> ds07 <- ds06 %>%
++   # Derive standard variables
++   mutate(
++     STUDYID = ds_raw$STUDY,
++     DOMAIN .... [TRUNCATED] 
+
+> View(ds07)
+
+> print("Writing DS domain to CSV file...")
+[1] "Writing DS domain to CSV file..."
+
+> write.csv(ds07, file = "ds_domain.csv", row.names = FALSE)
+
+> sink()
