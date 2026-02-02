@@ -1,0 +1,40 @@
+
+> # Load libraries
+> library(pharmaverseadam)
+
+> library(gtsummary)
+
+> library(dplyr)
+
+> library(tidyverse)
+
+> # Load example datasets
+> adae <- pharmaverseadam::adae
+
+> adsl <- pharmaverseadam::adsl
+
+> # Note: some patients don't have any AEs reported, so we need to use adsl as denominator
+> 
+> # length(unique(adsl$USUBJID)) 306
+> 
+> View(adae %>%  .... [TRUNCATED] 
+
+> # Create dataset with TEAEs
+> teae <- adae %>%
++   filter(SAFFL == "Y") # Filter safety population
+
+> tbl <- teae %>%
++   tbl_hierarchical(
++     variables = c(AESOC, AETERM),
++     by = ACTARM,
++     id = USUBJID,
++     denominator = adsl,
++     ove .... [TRUNCATED] 
+
+> # Save as HTML
+> 
+> tbl %>%
++   as_flex_table() %>%
++   flextable::save_as_html(path = "teae_summary_table.html")
+
+> sink()
