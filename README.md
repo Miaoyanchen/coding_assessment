@@ -1,5 +1,7 @@
 # Assessment Overview
 
+This assessment focuses on applying the Pharmaverse ecosystem to real-world clinical trial data workflows, leveraging open-source tools that support SDTM and ADaM standards. It demonstrates data manipulation and derivation using modern R packages such as `dplyr`, `tidyr`, and `Pharmaverse` tools including `admiral`, `sdtm.oak`, and `gtsummary`. The project also showcases clinical reporting capabilities through the development of Tables, Listings, and Graphs (TLGs) suitable for regulatory contexts. Throughout the project, emphasis is placed on clean, reproducible, and well-documented code, effective problem-solving, and adaptability to new tools. AI-enabled coding assistants are incorporated where appropriate to reflect contemporary industry practices for accelerating learning and development within the pharmaceutical domain.
+
 ## Question 1: SDTM DS Domain Creation using {sdtm.oak}
 
 This question demonstrates the creation of an **SDTM Disposition (DS) domain** using R, following CDISC SDTM standards and controlled terminology–driven mappings.
@@ -93,7 +95,7 @@ All datasets undergo preprocessing to convert blank character values to `NA` pri
 
 ## Question 3: Adverse Event Summary Tables and Visualizations
 
-This task generates **treatment-emergent adverse event (TEAE) summary tables** and **exploratory visualizations** using ADaM-style clinical trial data in R.\
+This task generates **treatment-emergent adverse event (TEAE) summary tables** and **exploratory visualizations** using ADaM-style clinical trial data in R.
 
 ### Objectives
 
