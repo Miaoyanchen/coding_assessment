@@ -1,0 +1,41 @@
+
+> library(pharmaverseadam)
+
+> library(ggplot2)
+
+> library(dplyr)
+
+> library(tidyverse)
+
+> adae <- pharmaverseadam::adae
+
+> # ---- Plot 1 ----
+> # AE severity distribution by treatment (bar chart or heatmap). 
+> # AE Severity is captured in the AESEV variable in pharmaver .... [TRUNCATED] 
+
+> # ---- Plot 2 ----
+> # Top 10 most frequent AEs (with 95% CI for incidence rates). 
+> # AEs are captured in the AETERM variable in the pharmaversead .... [TRUNCATED] 
+
+> # calculate incidence rates and Clopper–Pearson CI
+> ae_10 <- adae %>%
++   distinct(USUBJID, AETERM) %>%
++   count(AETERM, name = "total") %>%
++   a .... [TRUNCATED] 
+
+> plot_df <- ae_10 %>%
++   rowwise() %>%
++   mutate(
++     ci = list(binom.test(total, n_subj, conf.level = 0.95)$conf.int),
++     incidence_pct = tot .... [TRUNCATED] 
+
+> plot_df <- plot_df %>%
++   mutate(AETERM = factor(AETERM, levels = AETERM)) %>%
++   arrange(incidence_pct)
+
+> ggplot(plot_df, aes(x = incidence_pct, y = AETERM)) +
++   geom_point(size = 2, color = "steelblue") +
++   geom_errorbar(
++     aes(xmin = lower_pct, .... [TRUNCATED] 
+
+> sink()

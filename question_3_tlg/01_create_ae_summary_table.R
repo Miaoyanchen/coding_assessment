@@ -37,6 +37,6 @@ tbl <- teae %>%
 
 tbl %>%
   as_flex_table() %>%
-  flextable::save_as_html(path = "teae_summary_table.html")
+  flextable::save_as_html(path = "ae_summary_table.html")
 
 sink()
