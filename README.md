@@ -93,7 +93,7 @@ All datasets undergo preprocessing to convert blank character values to `NA` pri
 
 ## Question 3: Adverse Event Summary Tables and Visualizations
 
-This task generates **treatment-emergent adverse event (TEAE) summary tables** and **exploratory visualizations** using ADaM-style clinical trial data in R.\
+This task generates **treatment-emergent adverse event (TEAE) summary tables** and **exploratory visualizations** using ADaM-style clinical trial data in R.
 
 ### Objectives
 
