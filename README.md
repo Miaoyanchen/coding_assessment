@@ -30,7 +30,7 @@ This question demonstrates the creation of an **SDTM Disposition (DS) domain** u
 
 | Dataset                  | Description                         |
 |--------------------------|-------------------------------------|
-| stdm_ct.csv              | CSV file for controlled terminology |
+| sdtm_ct.csv              | CSV file for controlled terminology |
 | `pharmaverseraw::ds_raw` | Subject Disposition Raw Dataset     |
 | `pharmaversesdtm::dm`    | Demographics                        |
 
