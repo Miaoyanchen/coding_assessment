@@ -1,8 +1,6 @@
 # ---- ADaM ADSL Dataset Creation'
 
-setwd("~/Desktop/Genentech/question_2_adam")
-
-sink("creat_adsl.txt", append = FALSE, split = TRUE)
+sink("create_adsl.txt", append = FALSE, split = TRUE)
 
 # Load libraries
 library(dplyr)

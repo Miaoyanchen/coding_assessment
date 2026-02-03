@@ -1,0 +1,82 @@
+
+> # Load libraries
+> library(dplyr)
+
+> library(stringr)
+
+> library(admiral)
+
+> library(pharmaversesdtm)
+
+> # Load source datasets
+> dm <- pharmaversesdtm::dm
+
+> vs <- pharmaversesdtm::vs
+
+> ex <- pharmaversesdtm::ex
+
+> ds <- pharmaversesdtm::ds
+
+> ae <- pharmaversesdtm::ae
+
+> # Convert blank character values to NA
+> dm <- convert_blanks_to_na(dm)
+
+> ds <- convert_blanks_to_na(ds)
+
+> ex <- convert_blanks_to_na(ex)
+
+> ae <- convert_blanks_to_na(ae)
+
+> vs <- convert_blanks_to_na(vs)
+
+> # Using DM as the basis for ADSL
+> 
+> adsl <- dm %>%
++   select(-DOMAIN)
+
+> # Age grouping into categorical variable AGEGR9 and numeric variable AGEGR9N
+> 
+> agegr9_lookup <- exprs(
++   ~condition,           ~AGEGR9,
++   AGE .... [TRUNCATED] 
+
+> adsl <- adsl %>%
++   # Create categorical age groups
++   derive_vars_cat(
++     definition = agegr9_lookup
++   ) %>%
++   # Create numerical categori .... [TRUNCATED] 
+
+> # Derive treatment start date-time (TRTSDTM) and time flag (TRTSTMF) from EX
+> 
+> ex_ext <- ex %>%
++   derive_vars_dtm(
++     dtc = EXSTDTC,
++     n .... [TRUNCATED] 
+
+> # View(ex_ext)
+> 
+> adsl <- adsl %>%
++   derive_vars_merged(
++     dataset_add = ex_ext,
++     filter_add = (EXDOSE > 0 |
++                     (EXD .... [TRUNCATED] 
+
+> View(adsl %>% select(USUBJID, starts_with("TRT")))  
+
+> # Flag identifying patients who have been randomized (ITTFL)
+> adsl <- adsl %>%
++   derive_var_merged_exist_flag(
++     dataset_add = dm,
++     by = .... [TRUNCATED] 
+
+> # Set to the last date patient has documented clinical data
+> 
+> # Check for last known live date 
+> adsl <- adsl %>%
++   derive_vars_extreme_event( .... [TRUNCATED] 
+
+> save(adsl, file = file.path("adsl.rda"))
+
+> sink()
