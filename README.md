@@ -127,8 +127,8 @@ Example datasets from the `pharmaverseadam` package:
 
 | File | Description |
 |------------------------------------|------------------------------------|
-| `01_create_ae_summary_tables.R` | R script for generating AE summary table |
-| `01_create_ae_summary_tables.txt` | Log file capturing all console output from the table creation process |
+| `01_create_ae_summary_table.R` | R script for generating AE summary table |
+| `01_create_ae_summary_table.txt` | Log file capturing all console output from the table creation process |
 | `ae_summary_tables.gtml` | Resulting html file containing the generated AE summary table |
 | `02_create_visualizations.R` | R scripts for generating visualizations |
 | `plot1.png` | PNG file containing bar chart of AE severity distribution by treatment |
